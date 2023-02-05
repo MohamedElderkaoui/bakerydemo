@@ -1,45 +1,36 @@
-version: '2'
+version: '3.3'
 
 services:
   db:
+    image: postgres:latest
+    restart: always
     environment:
-      POSTGRES_DB: app_db
-      POSTGRES_USER: app_user
-      POSTGRES_PASSWORD: changeme
-    restart: always
-    image: postgres:9.6
-    expose:
-      - "5432"
-  redis:
-    restart: always
-    image: redis:3.0
-    expose:
-      - "6379"
-  elasticsearch:
-    image: elasticsearch:5.4
-    restart: always
-    expose:
-      - "9200"
-  app:
-    environment:
-      DJANGO_SECRET_KEY: changeme
-      DATABASE_URL: postgres://app_user:changeme@db/app_db
-      CACHE_URL: redis://redis
-      ELASTICSEARCH_ENDPOINT: elasticsearch
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    volumes:
-      - media-root:/code/bakerydemo/media
-    links:
-      - db:db
-      - redis:redis
-      - elasticsearch:elasticsearch
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+
     ports:
-      - "8000:8000"
-    depends_on:
-      - db
-      - redis
-      - elasticsearch
+      - '5432:5432'
+    
+    volumes: 
+      - dbbakery:/var/lib/postgresql/data
+      - ./backup:/backup
+      # - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 80:8080
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - '6379:6379'
+
 volumes:
-  media-root:
+  dbbakery:
+    driver: local

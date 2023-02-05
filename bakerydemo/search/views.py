@@ -23,6 +23,7 @@ def search(request):
             # If we aren't using ElasticSearch for the demo, fall back to native db search.
             # But native DB search can't search specific fields in our models on a `Page` query.
             # So for demo purposes ONLY, we hard-code in the model names we want to search.
+
             blog_results = BlogPage.objects.live().search(search_query)
             blog_page_ids = [p.page_ptr.id for p in blog_results]
 

@@ -1,6 +1,26 @@
-Wagtail demo project
-=======================
+# Wagtail demo project
+
 Ejemplo para clase
+
+## Tareas:
+* [ ] Migrar a Wagtail 4 (`requiremts_clase.txt` ya corregido)
+* [ ] Virtualizar BD
+    * [ ] `Vagrantfile` + `docker-compose.yml` con postgres
+    * [ ] fichero `.env` con variables de entorno
+* [ ] Comprobar funcionamiento
+* [ ] Cargar datos inciales (`load_initial_data`)
+* [ ] `update-index` https://docs.wagtail.org/en/stable/topics/search/indexing.html
+* [ ] Cache con [Redis](https://docs.wagtail.org/en/stable/advanced_topics/performance.html#cache)
+    * [ ] Comprobar con `django-debug-toolbar`
+* [ ] Elasticsearch  
+    * https://docs.wagtail.org/en/stable/topics/search/backends.html#elasticsearch-backend
+    * https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+    * https://sunscrapers.com/blog/how-to-use-elasticsearch-with-django/
+
+
+
+----
+
 
 This is a demonstration project for the amazing [Wagtail CMS](https://github.com/wagtail/wagtail).
 

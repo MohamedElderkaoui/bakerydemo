@@ -11,12 +11,12 @@ from wagtail.admin.edit_handlers import (
     InlinePanel,
     MultiFieldPanel,
     PageChooserPanel,
-    StreamFieldPanel,
+    FieldPanel,
 )
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Collection, Page
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.edit_handlers import FieldPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
@@ -57,7 +57,7 @@ class People(index.Indexed, ClusterableModel):
             ])
         ], "Name"),
         FieldPanel('job_title'),
-        ImageChooserPanel('image')
+        FieldPanel('image')
     ]
 
     search_fields = [
@@ -126,8 +126,8 @@ class StandardPage(Page):
     )
     content_panels = Page.content_panels + [
         FieldPanel('introduction', classname="full"),
-        StreamFieldPanel('body'),
-        ImageChooserPanel('image'),
+        FieldPanel('body'),
+        FieldPanel('image'),
     ]
 
 
@@ -254,7 +254,7 @@ class HomePage(Page):
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
-            ImageChooserPanel('image'),
+            FieldPanel('image'),
             FieldPanel('hero_text', classname="full"),
             MultiFieldPanel([
                 FieldPanel('hero_cta'),
@@ -262,11 +262,11 @@ class HomePage(Page):
             ]),
         ], heading="Hero section"),
         MultiFieldPanel([
-            ImageChooserPanel('promo_image'),
+            FieldPanel('promo_image'),
             FieldPanel('promo_title'),
             FieldPanel('promo_text'),
         ], heading="Promo section"),
-        StreamFieldPanel('body'),
+        FieldPanel('body'),
         MultiFieldPanel([
             MultiFieldPanel([
                 FieldPanel('featured_section_1_title'),
@@ -321,8 +321,8 @@ class GalleryPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('introduction', classname="full"),
-        StreamFieldPanel('body'),
-        ImageChooserPanel('image'),
+        FieldPanel('body'),
+        FieldPanel('image'),
         FieldPanel('collection'),
     ]
 
@@ -357,8 +357,8 @@ class FormPage(AbstractEmailForm):
     # Note how we include the FormField object via an InlinePanel using the
     # related_name value
     content_panels = AbstractEmailForm.content_panels + [
-        ImageChooserPanel('image'),
-        StreamFieldPanel('body'),
+        FieldPanel('image'),
+        FieldPanel('body'),
         InlinePanel('form_fields', label="Form fields"),
         FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel([

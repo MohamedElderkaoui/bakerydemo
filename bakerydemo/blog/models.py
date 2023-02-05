@@ -10,12 +10,12 @@ from modelcluster.fields import ParentalKey
 from taggit.models import Tag, TaggedItemBase
 
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, FieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page, Orderable
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.edit_handlers import FieldPanel
 from wagtail.search import index
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.edit_handlers import FieldPanel
 
 from bakerydemo.base.blocks import BaseStreamBlock
 
@@ -35,7 +35,7 @@ class BlogPeopleRelationship(Orderable, models.Model):
         'base.People', related_name='person_blog_relationship', on_delete=models.CASCADE
     )
     panels = [
-        SnippetChooserPanel('people')
+        FieldPanel('people')
     ]
 
 
@@ -79,8 +79,8 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('subtitle', classname="full"),
         FieldPanel('introduction', classname="full"),
-        ImageChooserPanel('image'),
-        StreamFieldPanel('body'),
+        FieldPanel('image'),
+        FieldPanel('body'),
         FieldPanel('date_published'),
         InlinePanel(
             'blog_person_relationship', label="Author(s)",
@@ -153,7 +153,7 @@ class BlogIndexPage(RoutablePageMixin, Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('introduction', classname="full"),
-        ImageChooserPanel('image'),
+        FieldPanel('image'),
     ]
 
     # Speficies that only BlogPage objects can live under this index page

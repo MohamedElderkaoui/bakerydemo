@@ -12,6 +12,14 @@ Ejemplo para clase
 * [ ] `update-index` https://docs.wagtail.org/en/stable/topics/search/indexing.html
 * [ ] Cache con [Redis](https://docs.wagtail.org/en/stable/advanced_topics/performance.html#cache)
     * [ ] Comprobar con `django-debug-toolbar`
+* [ ] Implementar backup en la BD y comprobar que funciona
+    * [ ] `pg_dump`
+    * [ ] `pg_restore`
+    * [ ] `crontab` para hacerlo periódicamente 
+       * [ ] https://www.hostinger.es/tutoriales/cron-job
+       * [ ] https://bhavya-tech.github.io/django-deployment/docs/setting-up-the-server/scheduled-backup/
+
+
 * [ ] Elasticsearch  
     * https://docs.wagtail.org/en/stable/topics/search/backends.html#elasticsearch-backend
     * https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html

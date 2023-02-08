@@ -19,6 +19,23 @@ Ejemplo para clase
        * [ ] https://www.hostinger.es/tutoriales/cron-job
        * [ ] https://bhavya-tech.github.io/django-deployment/docs/setting-up-the-server/scheduled-backup/
 
+* [ ] Añadir contenedor para la aplicación. **Ayudas**:
+    * [ ] https://docs.docker.com/compose/django/
+    * [ ] Dockerfile de este repositorio
+    * [ ] https://github.com/testdrivenio/django-docker-s3
+    * [ ] https://learndjango.com/tutorials/django-docker-and-postgresql-tutorial
+    * [ ] https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
+
+* [ ] Añadir contenedor de nginx
+
+* [ ] Poner en producción
+    * [ ] DEBUG = False
+    * [ ] ALLOWED_HOSTS 
+    * [ ] static y media
+
+* [ ] S3
+    * https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/
+    * AWS Learner Lab
 
 * [ ] Elasticsearch  
     * https://docs.wagtail.org/en/stable/topics/search/backends.html#elasticsearch-backend

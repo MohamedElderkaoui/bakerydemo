@@ -34,12 +34,10 @@ SECRET_KEY = 'c6u0-9c!7nilj_ysatsda0(f@e_2mws2f!6m0n^o*4#*q#kzp)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Uncomment this (and adjust as appropriate) to enable django-debug-toolbar
-INTERNAL_IPS = [
-     '127.0.0.1',
-]
+INTERNAL_IPS = ['*']
 
 # Application definition
 
@@ -210,7 +208,7 @@ WAGTAIL_SITE_NAME = "bakerydemo"
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/bakery',
+        'LOCATION': 'redis://redis:6379/baKERY',
         # for django-redis < 3.8.0, use:
         # 'LOCATION': '127.0.0.1:6379',
         'OPTIONS': {

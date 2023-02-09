@@ -1,6 +1,14 @@
 version: '3.3'
 services:
-
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/usr/src/app/staticfiles
+      - media_volume:/usr/src/app/mediafiles
+    ports:
+      - 1337:80
+    depends_on:
+      - wagtail # el nombre que hayamo dado al servicio de nuestra web
   wagtail:
     build: .
     restart: always

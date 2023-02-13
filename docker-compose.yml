@@ -7,7 +7,10 @@ services:
     ports:
       - 80:80
     depends_on:
-      - wagtail 
+      - wagtail
+      # add a volume to image
+    volumes:
+      - mediawt:/usr/share/nginx/mediawt
 
   wagtail:
     build: .
@@ -35,8 +38,8 @@ services:
       - POSTGRES_DB
     expose:
       - '5432'
-    
-    volumes: 
+
+    volumes:
       - dbbakery:/var/lib/postgresql/data
       - ./backup:/backup
       # - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql

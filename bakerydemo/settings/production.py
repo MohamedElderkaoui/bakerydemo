@@ -44,10 +44,10 @@ DATABASES["default"].update(db_from_env)
 
 # AWS creds may be used for S3 and/or Elasticsearch
 # Añadimos aws session token, necesario para los learner labs
-AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID".lower(), "")
-AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY".lower(), "")
-AWS_REGION = os.getenv("AWS_REGION".lower(), "")
-AWS_SESSION_TOKEN=os.getenv('aws_session_token', '')
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID", "")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY", "")
+AWS_REGION = os.getenv("AWS_REGION", "")
+AWS_SESSION_TOKEN=os.getenv('AWS_SESSION_TOKEN', '')
 
 
 # configure CACHES from CACHE_URL environment variable (defaults to locmem if no CACHE_URL is set)
@@ -114,18 +114,18 @@ if "AWS_STORAGE_BUCKET_NAME" in os.environ:
     INSTALLED_APPS.append("storages")
 
     # s3 bucket settings
-    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID'.lower())
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY'.lower())
-    AWS_SESSION_TOKEN = os.getenv('AWS_SESSION_TOKEN'.lower())
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_SESSION_TOKEN = os.getenv('AWS_SESSION_TOKEN')
     AWS_DEFAULT_ACL = None
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     # AWS_AUTO_CREATE_BUCKET = True
 
     # s3 static settings
-    STATIC_LOCATION = 'static'
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-    STATICFILES_STORAGE = 'bakerydemo.storage_backends.StaticStorage'
+    # STATIC_LOCATION = 'static'
+    # STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+    # STATICFILES_STORAGE = 'bakerydemo.storage_backends.StaticStorage'
     # s3 public media settings
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
